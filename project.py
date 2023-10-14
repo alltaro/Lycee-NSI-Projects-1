@@ -1,6 +1,7 @@
 from random import randint, uniform
 import turtle as t
 from turtle import *
+import turtle
 #/////////////////////////////////////////////////////////////////////////////////////////
 #/////////////////////////////////////////////////////////////////////////////////////////
 divide_orientation_circle = 1
@@ -55,6 +56,27 @@ def fleure6(taille_multiplicateur):
         t.end_fill()
         t.left(18)
         
+
+
+def draw_tulip(size):
+    turtle.forward(size)
+    turtle.left(90)
+    turtle.forward(size)
+    turtle.left(90)
+    turtle.forward(size)
+    turtle.left(90)
+    turtle.forward(size)
+    turtle.left(90)
+
+def draw_flower(size):
+    for _ in range(4):
+        draw_tulip(size)
+        turtle.right(90)
+
+def tulipe( size):
+    for _ in range(4):
+        draw_flower(size)
+        turtle.right(360 / 10)
 
 def rosace(n, i, pos_x_y):
     t.tracer(0)
@@ -119,9 +141,10 @@ def rosace(n, i, pos_x_y):
         aller_à(pos_x_y[i][0],pos_x_y[i][1]+8.5)
         fleure6(0.5)
         t.circle(15)
+    elif n == 7:
+        tulipe(50)
     t.tracer(1)
-    
-
+ 
 def dessiner_tige():
     tige_orientation = uniform(-70,70)
     taille_tige = uniform(25, 38)
@@ -169,7 +192,7 @@ def bouquet():
         pos_x_y = organisation_des_points(pos_x,pos_y)
         aller_à(pos_x_y[i][0],pos_x_y[i][1])
         t.pensize(randint(2,3))
-        rosace(1+((i+fleur_de_départ)%6),i, pos_x_y)
+        rosace(1+((i+fleur_de_départ)%7),i, pos_x_y)
         retour_au_départ()
         
 
