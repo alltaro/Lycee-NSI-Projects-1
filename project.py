@@ -112,7 +112,7 @@ def rosace(n, i, pos_x_y):
     elif n == 6:
         print(pos_x_y[i][0],pos_x_y[i][1])
         t.setheading(0)
-        aller(pos_x_y[i][0],pos_x_y[i][1])
+        aller_à(pos_x_y[i][0],pos_x_y[i][1])
         fleure6(1)
         aller_à(pos_x_y[i][0],pos_x_y[i][1]+4.5)
         fleure6(0.7)
@@ -174,9 +174,5 @@ def bouquet():
         
 
 bouquet()
-
-
-
-
 done()
 
