@@ -5,7 +5,7 @@ from turtle import *
 #/////////////////////////////////////////////////////////////////////////////////////////
 divide_orientation_circle = 1
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]
-longueur = 30
+longueur = 23
 cran = [4, 13, 25, 40,0]
 valeur = [7.6, 5, 2, 0.78, 0.50]
 pos_x = []
@@ -52,19 +52,14 @@ def rosace(n):
             carré(longueur/3*2*2)
             t.right(360/15)
     elif n == 2:
-        print(234)
-        for i in range(36):
-            t.pencolor("white")
-            t.fillcolor("white")
+        taille = uniform(30, 70) # Utilisez uniform pour varier la taille
+        for i in range(5):
             begin_fill()
-            losange(longueur*1.65)
+            circle(taille, 90) 
+            left(90)
+            circle(taille, 90)
             end_fill()
-            t.right(10)
-        for i in range(36):
-            t.pencolor(colors[i%6])
-            t.fillcolor(colors[(i+1)%6])
-            losange(longueur*1.65)
-            t.right(10)
+            left(10)
     elif n == 3:
         for i in range(20):
             t.pencolor(colors[i%6])
@@ -73,9 +68,7 @@ def rosace(n):
             losange(longueur*1.5)
             t.right(360/20)
             t.end_fill()
-    elif n == 4:
-        rosace(randint(2,6))
-    elif n == 5 :
+    elif n == 4 :
         t.pensize(1)
         for i in range(8):
             t.fillcolor(colors[i%6])
@@ -150,17 +143,22 @@ def bouquet():
 
 bouquet()
 
-t.goto(0, 0)
+t.pensize()
 taille = randint(30, 70)
+t.color("red","orange")
 for i in range(20):
     t.begin_fill()
-    t.circle(80, 90/2)
+    t.circle(100, 45)
     t.left(90)
-    t.circle(80, 90/2)  
+    t.circle(100, 45)  
     t.end_fill()
     t.left(18)
-t.goto(0, 0)
-t.circle(25)
-       
+t.right(18)
+t.goto(0,0)
+begin_fill()
+t.circle(30)
+end_fill()
+
+
 done()
 
