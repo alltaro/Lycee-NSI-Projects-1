@@ -41,23 +41,37 @@ def losange(longueur):
                 t.right(60)
                 t.forward(longueur)
                 t.right(120)
-def rosace(n):
+                
+def fleure6(taille_multiplicateur):
+    x = taille_multiplicateur
+    t.pensize(2)
+    taille = randint(30, 70)
+    t.color("red","orange")
+    for _ in range(20):
+        t.begin_fill()
+        t.circle(100*x, 45)
+        t.left(90)
+        t.circle(100*x, 45)  
+        t.end_fill()
+        t.left(18)
+        
+
+def rosace(n, i, pos_x_y):
     t.tracer(0)
     if n == 1:
-        print(1)
-        for o in range(15):
-            t.pencolor(colors[o%6])
-            t.fillcolor(colors[o%6])
+        for i in range(15):
+            t.pencolor(colors[i%6])
+            t.fillcolor(colors[i%6])
             carré(longueur*2)
             carré(longueur/3*2*2)
             t.right(360/15)
     elif n == 2:
-        taille = uniform(30, 70) # Utilisez uniform pour varier la taille
-        for i in range(5):
+        taille = uniform(30, 70)
+        for _ in range(9):
             begin_fill()
-            circle(taille, 90) 
+            circle(taille, 90)  # Utilisez random.uniform pour varier la taille
             left(90)
-            circle(taille, 90)
+            circle(taille, 90)  # Utilisez random.uniform pour varier la taille
             end_fill()
             left(10)
     elif n == 3:
@@ -88,18 +102,28 @@ def rosace(n):
             t.circle(16)
             t.end_fill()
             t.rt(45)
+    elif n == 5:
+        t.begin_fill()
+        for _ in range(45):
+            t.forward(100)
+            t.left(170)
+            t.forward(100)
+        t.end_fill()
     elif n == 6:
-        begin_fill()
-        for x in range(45):
-            forward(100)
-            left(170)
-            forward(100)
-        end_fill()
+        print(pos_x_y[i][0],pos_x_y[i][1])
+        t.setheading(0)
+        aller(pos_x_y[i][0],pos_x_y[i][1])
+        fleure6(1)
+        aller_à(pos_x_y[i][0],pos_x_y[i][1]+4.5)
+        fleure6(0.7)
+        aller_à(pos_x_y[i][0],pos_x_y[i][1]+8.5)
+        fleure6(0.5)
+        t.circle(15)
     t.tracer(1)
+    
 
 def dessiner_tige():
     tige_orientation = uniform(-70,70)
-    print(tige_orientation)
     taille_tige = uniform(25, 38)
     if tige_orientation < 0:
         t.left(-tige_orientation)
@@ -117,9 +141,16 @@ def dessiner_tige():
                 break
         t.circle(150*divide_orientation_circle*1.5*2*2,taille_tige/divide_orientation_circle)
     
-
+def organisation_des_points(x, y):
+    print(zip(x, y))
+    points = list(zip(x, y))
+    print(points)
+    points_sorted = sorted(points, key=lambda point: point[1], reverse=True)
+    liste_finale = [[x, y] for x, y in points_sorted]
+    return liste_finale
 
 def bouquet():
+    fleur_de_départ = randint(0,5)
     t.tracer(0)
     retour_au_départ()
     t.speed(10)
@@ -131,33 +162,20 @@ def bouquet():
         dessiner_tige()
         pos_x.append(t.xcor())
         pos_y.append(t.ycor())
-        print(t.xcor())
         retour_au_départ()
     for i in range(nombre_fleurs):
+        t.setheading(90)
         t.color(colors[i%6],colors[(i+1)%6])
-        aller_à(pos_x[i],pos_y[i])
+        pos_x_y = organisation_des_points(pos_x,pos_y)
+        aller_à(pos_x_y[i][0],pos_x_y[i][1])
         t.pensize(randint(2,3))
-        rosace(randint(1,5))
+        rosace(1+((i+fleur_de_départ)%6),i, pos_x_y)
         retour_au_départ()
         
 
 bouquet()
 
-t.pensize()
-taille = randint(30, 70)
-t.color("red","orange")
-for i in range(20):
-    t.begin_fill()
-    t.circle(100, 45)
-    t.left(90)
-    t.circle(100, 45)  
-    t.end_fill()
-    t.left(18)
-t.right(18)
-t.goto(0,0)
-begin_fill()
-t.circle(30)
-end_fill()
+
 
 
 done()
