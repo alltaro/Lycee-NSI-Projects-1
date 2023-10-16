@@ -2,7 +2,7 @@
 from random import randint
 
 def division(n:int)-> int:
-    assert n > O
+    assert n > 0
     div = 0
     while n>1:
         n /= 10
@@ -36,13 +36,23 @@ def exo_35_while(a,b):
 def lievre_gagne():
     pos_tortue = 0
     de = 0
-    while pos_tortue != 6:
+    while de != 6:
+        pos_tortue += 1
         de = randint(1,6)
-        if de != 6:
-            pos_tortue += 1
-        else :
-            return "lievre"
-    return "tortue"
+    if pos_tortue > 6.1:
+        return False
+    else : return True
         
+def pourcentage_win(précision: int) -> int:
+    assert précision > 0
+    Lievre = 0
+    for x in range(précision):
+        if lievre_gagne():
+            Lievre += 1
+    Pourcentage = (Lievre/précision)*6
+    return Pourcentage
 
+print(pourcentage_win(25000))
 #exo_35(int(input('Nombre de départ \n')),int(input("Nombre de fin \n")))
+#for x in range(10):
+ #   print(lievre_gagne())
