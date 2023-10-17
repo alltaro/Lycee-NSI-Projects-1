@@ -43,7 +43,7 @@ def lievre_gagne():
         return False
     else : return True
         
-def pourcentage_win(précision: int) -> int:
+def frequence(précision: int) -> int:
     assert précision > 0
     Lievre = 0
     for x in range(précision):
@@ -52,7 +52,7 @@ def pourcentage_win(précision: int) -> int:
     Pourcentage = (Lievre/précision)*100
     return Pourcentage
 
-print(pourcentage_win(250000))
+print(frequence(250000))
 #exo_35(int(input('Nombre de départ \n')),int(input("Nombre de fin \n")))
 #for x in range(10):
  #   print(lievre_gagne())
