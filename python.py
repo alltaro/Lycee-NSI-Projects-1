@@ -52,7 +52,85 @@ def frequence(précision: int) -> int:
     Pourcentage = (Lievre/précision)*100
     return Pourcentage
 
-print(frequence(250000))
+#print(frequence(154000000))
 #exo_35(int(input('Nombre de départ \n')),int(input("Nombre de fin \n")))
 #for x in range(10):
  #   print(lievre_gagne())
+
+def return_nombre(liste):
+    new = ""
+    for x in liste:
+        new = x + new
+    return new
+
+def return_liste(liste):
+    new = []
+    for x in range(len((liste))):
+        new.append(liste[len(liste)-x-1])
+    return new
+
+
+
+def inverse_plus_un(binaire):
+    inverse = ''
+    for bit in binaire:
+        inverse += '0' if bit == '1' else '1'
+    # Ajouter 1 au binaire inversé
+    inverse = list(inverse)
+    for i in range(len(inverse) - 1, -1, -1):
+        if inverse[i] == '0':
+            inverse[i] = '1'
+            break
+        else:
+            inverse[i] = '0'
+    return ''.join(inverse)
+
+# Testons l'algorithme
+binaire = '0100'
+resultat = inverse_plus_un(binaire)
+print(f"L'inverse de {binaire} plus 1 est {resultat}")
+
+def convert_base_10_to_x(decimal, base_x):
+    if decimal == 0:
+        return "0"  # Le nombre 0 reste inchangé dans n'importe quelle base.
+
+    result = ""
+    while decimal > 0:
+        remainder = decimal % base_x
+        result = str(remainder) + result  # Ajoutez le chiffre dans la bonne position.
+        decimal = decimal // base_x  # Division entière pour continuer avec le quotient.
+
+    return result
+
+
+#def negatif(binaire: str) -> str:
+#    complement = ''.join('1' if bit == '0' else '0' for bit in binaire)
+#    return complement
+#
+#def negatif(binaire:int) -> str :
+#    y = 0
+#    o = 0
+#    liste = ""
+#    negative = []
+#    for x in (binaire):
+#        y = 1 - int(x)
+#        negative.append(y)
+#    print(return_liste(negative))
+#    for x in return_liste(negative):
+#        print(x)
+#        o += 1
+#        if x == 1:
+#            y = "0"
+#            liste = str(y) + liste
+#            print(liste)
+#            print("ok")
+#        else :
+#            y  = "1"
+#            liste = str(y) + liste
+#            print(liste)
+#            for u in range(o):
+#                negative.pop(len(negative)-1-u)
+#            for x in range(len(negative)-o):
+#                liste = str(negative[len(negative)-x-1]-o) + liste
+#            return liste
+#print(negatif("01100100"))

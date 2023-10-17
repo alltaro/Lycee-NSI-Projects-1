@@ -132,7 +132,7 @@ def bouquet():
     for i in range(nombre_fleurs):
         t.pencolor(colors[i%6]) 
         t.fillcolor(colors[i%6])
-        t.goto(pos_x[i](),pos_y[i]())
+        t.goto(pos_x[i](),pos_y[i])
         t.pensize(randint(2,3))
         rosace(randint(1,5))
         retour_au_départ()
