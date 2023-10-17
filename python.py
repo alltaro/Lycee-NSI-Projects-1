@@ -39,7 +39,7 @@ def lievre_gagne():
     while de != 6:
         pos_tortue += 1
         de = randint(1,6)
-    if pos_tortue > 6.1:
+    if pos_tortue > 6:
         return False
     else : return True
         
@@ -49,10 +49,10 @@ def pourcentage_win(précision: int) -> int:
     for x in range(précision):
         if lievre_gagne():
             Lievre += 1
-    Pourcentage = (Lievre/précision)*6
+    Pourcentage = (Lievre/précision)*100
     return Pourcentage
 
-print(pourcentage_win(25000))
+print(pourcentage_win(250000))
 #exo_35(int(input('Nombre de départ \n')),int(input("Nombre de fin \n")))
 #for x in range(10):
  #   print(lievre_gagne())
