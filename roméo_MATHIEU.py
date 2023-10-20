@@ -28,6 +28,7 @@ haut = 90
 nombre_de_fleurs_min = 6
 nombre_de_fleurs_max = 12
 taille_tige_min = 2
+nombre_de_répétitions_rosace_1 = 15
 taille_tige_max = 3
 coef_fleur6_1 = 1
 coef_fleur6_2 = 0.7
@@ -54,7 +55,10 @@ incli_min = -80
 incli_max = 80
 taille_tige_min_longueur = 25
 taille_tige_max_longueur = 38
-
+nombre_de_rosaces = 5
+nombre_de_répétitions_fleur6 = 20
+milieu_de_l_écran = -largeur/2
+nombre_répétitions_rosace_5 = 45
 
 def aller_à(x, y):
     t.penup()
@@ -63,7 +67,7 @@ def aller_à(x, y):
     
 def retour_au_départ():
     t.penup()
-    t.goto(0, -largeur/2)
+    t.goto(0, milieu_de_l_écran)
     t.pendown()
 
 def carré(longueur):
@@ -80,7 +84,6 @@ def losange(longueur):
                 
 def fleure6(taille_multiplicateur):
     x = taille_multiplicateur
-    nombre_de_répétitions_fleur6 = 20
     t.pensize(2)
     t.color(colors[1],colors[2])
     for _ in range(nombre_de_répétitions_fleur6):
@@ -94,15 +97,13 @@ def fleure6(taille_multiplicateur):
 
 def rosace(n, i, pos_x_y):
     t.tracer(0)
-    if n == 1:
-        
-        nombre_de_répétitions = 15
-        for i in range(nombre_de_répétitions):
+    if n == 1:        
+        for i in range(nombre_de_répétitions_rosace_1):
             t.pencolor(colors[i%nombre_de_couleurs])
             t.fillcolor(colors[i%nombre_de_couleurs])
             carré(longueur*coef_rosace_1)
             carré(longueur/coef_rosace_2*coef_rosace_3)
-            t.right(tour_complet/nombre_de_répétitions)
+            t.right(tour_complet/nombre_de_répétitions_rosace_1)
     elif n == 2:
         taille = uniform(30, 60)
         for _ in range(9):
@@ -143,7 +144,7 @@ def rosace(n, i, pos_x_y):
     elif n == 5:
         t.begin_fill()
         t.pensize(1)
-        for _ in range(45):
+        for _ in range(nombre_répétitions_rosace_5):
             t.forward(100/1.5)
             t.left(170)
             t.forward(100/1.5)
@@ -189,7 +190,7 @@ def organisation_des_points_par_ordre_croissant(x, y):
     return liste_finale
 
 def bouquet():
-    fleur_de_départ = randint(0,5)
+    fleur_de_départ = randint(0,nombre_de_rosaces)
     t.tracer(0)
     retour_au_départ()
     t.speed(vitesse_tortue)
@@ -207,7 +208,7 @@ def bouquet():
         t.color(colors[i%nombre_de_couleurs],colors[(i+1)%nombre_de_couleurs])
         pos_x_y = organisation_des_points_par_ordre_croissant(pos_x,pos_y)
         aller_à(pos_x_y[i][origin_x],pos_x_y[i][origin_y])
-        t.pensize(randint(2,3))
+        t.pensize(randint(taille_tige_min,taille_tige_max))
         rosace(1+((i+fleur_de_départ)%6),i, pos_x_y)
         retour_au_départ()
         
