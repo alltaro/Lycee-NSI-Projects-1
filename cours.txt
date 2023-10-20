@@ -1,0 +1,6 @@
+#cours.txt
+2**n c'est codé à 1 suivi de n zéros
+2 à la puissance n - 1 c'est n 1
+ex : 
+2**3 c'est codé 1 suivi de 3 zéros donc 1000
+111 c'est aussi 2**3 -1 car 1000 - 1 = 111
