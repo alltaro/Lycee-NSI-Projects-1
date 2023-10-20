@@ -4,3 +4,4 @@
 ex : 
 2**3 c'est codé 1 suivi de 3 zéros donc 1000
 111 c'est aussi 2**3 -1 car 1000 - 1 = 111
+2**12 - 1 sur 2 octets = (0000111111111111)

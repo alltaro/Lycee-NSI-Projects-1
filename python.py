@@ -104,4 +104,4 @@ def banque_gagne():
         elif S == P:
             return False
 
-print(frequence(1540000, banque_gagne))
+#print(frequence(1540000, banque_gagne))
