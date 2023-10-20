@@ -47,7 +47,6 @@ def losange(longueur):
 def fleure6(taille_multiplicateur):
     x = taille_multiplicateur
     t.pensize(2)
-    taille = randint(30, 70)
     t.color(colors[1],colors[2])
     for _ in range(20):
         t.begin_fill()
