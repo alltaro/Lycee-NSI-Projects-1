@@ -50,6 +50,8 @@ circle_1_rosace_4 = 30
 circle_2_rosace_4 = 26
 circle_3_rosace_4 = 20
 circle_4_rosace_4 = 16
+incli_min = -80
+incli_max = 80
 
 
 def aller_à(x, y):
@@ -157,8 +159,8 @@ def rosace(n, i, pos_x_y):
         t.circle(fleur6_taille_circle)
     t.tracer(1)
  
-def dessiner_tige():
-    tige_orientation = uniform(-80,80)
+def dessiner_tige(): #cet algorithme va permettre de tordre plus ou moins les tiges en fonction de leur inclination
+    tige_orientation = uniform(incli_min,incli_max)
     taille_tige = uniform(25, 38)
     if tige_orientation < 0:
         t.left(-tige_orientation)
@@ -176,7 +178,7 @@ def dessiner_tige():
                 break
         t.circle(divide_orientation_circle*coef_circle,taille_tige/divide_orientation_circle)
     
-def organisation_des_points_croissant(x, y):
+def organisation_des_points_par_ordre_croissant(x, y):
     print(zip(x, y))
     points = list(zip(x, y))
     print(points)
@@ -201,7 +203,7 @@ def bouquet():
     for i in range(nombre_fleurs):
         t.setheading(haut)
         t.color(colors[i%nombre_de_couleurs],colors[(i+1)%nombre_de_couleurs])
-        pos_x_y = organisation_des_points_croissant(pos_x,pos_y)
+        pos_x_y = organisation_des_points_par_ordre_croissant(pos_x,pos_y)
         aller_à(pos_x_y[i][origin_x],pos_x_y[i][origin_y])
         t.pensize(randint(2,3))
         rosace(1+((i+fleur_de_départ)%6),i, pos_x_y)
