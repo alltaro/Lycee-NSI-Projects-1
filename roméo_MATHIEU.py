@@ -52,6 +52,8 @@ circle_3_rosace_4 = 20
 circle_4_rosace_4 = 16
 incli_min = -80
 incli_max = 80
+taille_tige_min_longueur = 25
+taille_tige_max_longueur = 38
 
 
 def aller_à(x, y):
@@ -161,7 +163,7 @@ def rosace(n, i, pos_x_y):
  
 def dessiner_tige(): #cet algorithme va permettre de tordre plus ou moins les tiges en fonction de leur inclination
     tige_orientation = uniform(incli_min,incli_max)
-    taille_tige = uniform(25, 38)
+    taille_tige = uniform(taille_tige_min_longueur, taille_tige_max_longueur)
     if tige_orientation < 0:
         t.left(-tige_orientation)
         t.left(demi_tour)
