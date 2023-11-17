@@ -1,7 +1,7 @@
 from tkinter import *
 from random import randint
 
-NB_CELLULES  = 1000
+NB_CELLULES  = 500
 NB_GENERATIONS = 400
 
 ###############################################
@@ -18,7 +18,7 @@ def dec_to_bin(nombre:int,taille:int)->list:
     """
     tab = []
     while nombre > 0:
-        tab.append = nombre % 2
+        tab.append(nombre % 2)
         nombre //= 2
     return tab + [0]*(taille-len(tab))
 
@@ -56,7 +56,7 @@ def indice(gauche:int,centre:int,droit:int)->int:
 #
 ################################################
 
-def etat_suivant(col_actuelle:list,regle:list,pos:int,voisinage:function)->int:
+def etat_suivant(col_actuelle:list,regle:list,pos:int,voisinage)->int:
     """
     renvoie l'Ã©tat futur de la cellule situÃ©e
     dans le tableau col_actuelle à  la position pos
@@ -71,7 +71,7 @@ def generation_suivante(col_actuelle:list,regle:list,voisinage)->list:
     renvoie la génération suivante de la colonie actuelle
     """
     n_generation = [0]*len(col_actuelle)
-    for pos in enumerate(range(1,len(col_actuelle)-1)):
+    for pos in range(1,len(col_actuelle)-1):
        n_generation[pos] = etat_suivant(col_actuelle,regle,pos,voisinage)
     return n_generation
 
@@ -192,7 +192,7 @@ fenetre.title("automate cellulaire bicolore")
 zoneDessin = Canvas(fenetre,width=LARGEUR,height=HAUTEUR)
 zoneDessin.pack(side=TOP)
 #
-regle = dec_to_bin(110,8)
+regle = dec_to_bin(69,8)
 evolution(regle,indice,dessine_colonie)
 fenetre.mainloop()
 
